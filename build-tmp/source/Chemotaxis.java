@@ -22,8 +22,8 @@ public class Chemotaxis extends PApplet {
  {     
  	size(800,800);
  	frameRate(30);
- 	soot = new Sprites[100];
- 	candy = new Sprinkles[20];
+ 	soot = new Sprites[110];
+ 	candy = new Sprinkles[40];
  	pinkC = color(252, 177, 207);
 	whiteC = color(255, 242, 247);
 	greenC = color(170, 250, 199);
@@ -106,7 +106,6 @@ class Sprinkles
  	{
  		if (get(myX, myY) != myC )
  		{
- 			println("ALERT!");
  			myX = -10;
  		}
  	}
