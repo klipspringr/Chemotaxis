@@ -49,7 +49,7 @@
  }   
  void draw()   
  {    
-	background(115, 41, 33);
+	background(196, 132, 132);
 	for (int i = 0; i < candy.length; i++)
  	{
  		candy[i].show();
