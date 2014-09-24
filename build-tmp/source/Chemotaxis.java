@@ -1,8 +1,24 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Chemotaxis extends PApplet {
+
  //declare Sprinkles variables here 
  Sprites [] soot;
  Sprinkles [] candy;
  int pinkC, yellowC, whiteC, greenC;
- void setup()   
+ public void setup()   
  {     
  	size(800,800);
  	frameRate(30);
@@ -20,15 +36,15 @@
  		whiteC = color(255, 242, 247);
  		greenC = color(170, 250, 199);
  		yellowC = color(255, 241, 135);
- 		if (Math.random() < .25 && Math.random() > 0)
+ 		if (Math.random() < .25f && Math.random() > 0)
  		{
  			myC = pinkC;
  		}
-		else if (Math.random() >.25 && Math.random() <.5)
+		else if (Math.random() >.25f && Math.random() <.5f)
  		{
  			myC = yellowC;
  		}
- 		else if (Math.random() >.5 && Math.random() < .75)
+ 		else if (Math.random() >.5f && Math.random() < .75f)
  		{
  			myC = whiteC;
  		}
@@ -47,7 +63,7 @@
  		soot[i] = new Sprites(bX, bY);
  	}
  }   
- void draw()   
+ public void draw()   
  {    
 	background(115, 41, 33);
 	for (int i = 0; i < candy.length; i++)
@@ -78,7 +94,7 @@ class Sprinkles
  		myY = y;
  		myC = c;
  	}
- 	void show()
+ 	public void show()
  	{
  		
  		fill(myC); //yellow
@@ -86,7 +102,7 @@ class Sprinkles
  		rect(myX-4, myY-4, 8, 8, -4);
  		ellipse(myX, myY, 10, 10);
  	}
- 	void eatCheck()
+ 	public void eatCheck()
  	{
  		if (get(myX, myY) != myC )
  		{
@@ -104,7 +120,7 @@ class Sprites
  		myX = x;
  		myY = y;
  	}
- 	void show()
+ 	public void show()
  	{
  		fill(0);
  		ellipse(myX, myY, 20, 20);
@@ -119,13 +135,22 @@ class Sprites
  		ellipse(myX-4, myY-1, 6, 7);
  		ellipse(myX+4, myY-1, 6, 7);
  		fill(0);
- 		ellipse(myX-4, myY-1, 2.5, 2.5);
- 		ellipse(myX+4, myY-1, 2.5, 2.5);
+ 		ellipse(myX-4, myY-1, 2.5f, 2.5f);
+ 		ellipse(myX+4, myY-1, 2.5f, 2.5f);
  	}
- 	void walk()
+ 	public void walk()
  	{
  		myX = myX + (int)(Math.random()*5)-2;
  		myY = myY + (int)(Math.random()*5)-2;
  	}
  	
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Chemotaxis" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
